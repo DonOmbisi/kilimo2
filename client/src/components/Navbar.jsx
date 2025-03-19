@@ -29,9 +29,9 @@ const Navbar = () => {
 		<div className='bg-[#E0FCE7] bg-cover w-full h-[80px] z-20 fixed top-0 flex items-center justify-between py-2 px-6 shadow-md'>
 			<Link to={'/home'}>
 				<div className='flex items-center space-x-2 '>
-					<img src='/krishi-coin-logo.png' alt='Logo' className='h-12' />
+					<img src='/kilimo1.jpg' alt='Logo' className='h-12' />
 					<span className='text-green-900 text-[32px] font-bold max-md:hidden'>
-						KrishiCoin
+						KILIMO CONNECT
 					</span>
 				</div>
 			</Link>
@@ -45,7 +45,7 @@ const Navbar = () => {
 				</button>
 				<dialog id='my_modal_1' className='modal'>
 					<div className='modal-box bg-white'>
-						<p className='text-black text-xl'>Swap your tokens without leaving KrishiCoin!</p>
+						<p className='text-black text-xl'>Swap your tokens without leaving KILIMO CONNECT!</p>
 						<SwapComponent />
 						<div className='modal-action w-full'>
 							<form method='dialog' className='w-full'>

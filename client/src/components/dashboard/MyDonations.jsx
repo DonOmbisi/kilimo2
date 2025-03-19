@@ -1,4 +1,5 @@
-import React from "react";
+
+import PropTypes from 'prop-types';
 
 function Donations({ src, title, donated_at, amount, owner }) {
 
@@ -32,5 +33,13 @@ function Donations({ src, title, donated_at, amount, owner }) {
     </div>
   );
 }
+
+Donations.propTypes = {
+  src: PropTypes.string.isRequired,
+  title: PropTypes.string.isRequired,
+  donated_at: PropTypes.string.isRequired,
+  amount: PropTypes.number.isRequired,
+  owner: PropTypes.string.isRequired,
+};
 
 export default Donations;

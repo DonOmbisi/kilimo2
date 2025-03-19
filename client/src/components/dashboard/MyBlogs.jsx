@@ -1,5 +1,5 @@
-import React from "react";
 import { FaRegThumbsDown, FaRegThumbsUp } from "react-icons/fa";
+import PropTypes from 'prop-types';
 
 function Blogs({ src, title, created_at, upvotes, downvotes }) {
   const formatDate = (date) => {
@@ -47,5 +47,12 @@ function Blogs({ src, title, created_at, upvotes, downvotes }) {
     </div>
   );
 }
+Blogs.propTypes = {
+  src: PropTypes.string.isRequired,
+  title: PropTypes.string.isRequired,
+  created_at: PropTypes.string.isRequired,
+  upvotes: PropTypes.number.isRequired,
+  downvotes: PropTypes.number.isRequired,
+};
 
 export default Blogs;

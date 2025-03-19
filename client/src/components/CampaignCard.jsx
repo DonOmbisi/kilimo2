@@ -1,4 +1,5 @@
 import { MdOutlineTimer } from "react-icons/md";
+import PropTypes from 'prop-types';
 import { formatDistanceStrict, isPast } from "date-fns"; // Import date-fns
 import { Link } from "react-router-dom";
 
@@ -52,5 +53,14 @@ function CampaignCard({
     </div>
   );
 }
+CampaignCard.propTypes = {
+  id: PropTypes.string.isRequired,
+  title: PropTypes.string.isRequired,
+  target: PropTypes.number.isRequired,
+  amtfunded: PropTypes.number.isRequired,
+  author: PropTypes.string.isRequired,
+  image: PropTypes.string.isRequired,
+  deadline: PropTypes.string.isRequired,
+};
 
 export default CampaignCard;

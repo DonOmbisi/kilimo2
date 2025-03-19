@@ -1,4 +1,5 @@
 import { formatDistanceStrict, isPast } from 'date-fns';
+import PropTypes from 'prop-types';
 import { cwfContract } from '../../utils/contract';
 import toast from 'react-hot-toast';
 import { useEffect, useState } from 'react';
@@ -9,7 +10,6 @@ function FundRaisers({
 	id,
 	title,
 	funded,
-	price,
 	donators_cnt,
 	deadline,
 	donatorsList,
@@ -38,18 +38,18 @@ function FundRaisers({
 
 	const [isFundsWithdrawn, setIsFundsWithdrawn] = useState(false);
 
-	const getFundraiserFromContract = async () => {
-		try {
-			const fundraiser = await cwfContract.getProject(projectId);
-			setIsFundsWithdrawn(fundraiser.fundsWithdrawn);
-		} catch (error) {
-			console.error('Error getting fundraiser from contract ', error);
-		}
-	};
-
 	useEffect(() => {
+		const getFundraiserFromContract = async () => {
+			try {
+				const fundraiser = await cwfContract.getProject(projectId);
+				setIsFundsWithdrawn(fundraiser.fundsWithdrawn);
+			} catch (error) {
+				console.error('Error getting fundraiser from contract ', error);
+			}
+		};
+
 		getFundraiserFromContract();
-	}, []);
+	}, [projectId]);
 
 	return (
 		<div className='flex max-md:flex-col flex-row justify-between items-center md:items-start bg-white text-black p-6 rounded-lg shadow-lg'>
@@ -165,5 +165,25 @@ function FundRaisers({
 		</div>
 	);
 }
+FundRaisers.propTypes = {
+	src: PropTypes.string.isRequired,
+	id: PropTypes.string.isRequired,
+	title: PropTypes.string.isRequired,
+	funded: PropTypes.number.isRequired,
+	donators_cnt: PropTypes.number.isRequired,
+	price: PropTypes.number.isRequired,
+	deadline: PropTypes.string.isRequired,
+	donatorsList: PropTypes.arrayOf(
+		PropTypes.shape({
+			user: PropTypes.shape({
+				name: PropTypes.string.isRequired,
+			}).isRequired,
+			amount_donated: PropTypes.number.isRequired,
+			donated_at: PropTypes.string.isRequired,
+		})
+	).isRequired,
+	amt_collected: PropTypes.number.isRequired,
+	projectId: PropTypes.string.isRequired,
+};
 
 export default FundRaisers;

@@ -4,7 +4,7 @@ import ProgressBar from "../components/ProgressBar";
 import { useNavigate, useParams } from "react-router-dom";
 import CustomLoader from "../components/CustomLoader";
 import { donateToFundraiser, getFundraiser } from "../apis/fundRaiser";
-import { formatDistanceStrict, isPast, set } from "date-fns";
+import { formatDistanceStrict, isPast } from "date-fns";
 import toast from "react-hot-toast";
 import { cwfContract } from "../utils/contract";
 import { ethers } from "ethers";
@@ -43,20 +43,20 @@ const CrowdFundDetails = () => {
     }
   };
 
-  const getFundraiserDetail = async () => {
-    try {
-      const response = await getFundraiser(id);
-      setFundraiser(response);
-    } catch (error) {
-      console.error("Error fetching fundraiser:", error);
-    } finally {
-      setLoading(false);
-    }
-  };
-
   useEffect(() => {
+    const getFundraiserDetail = async () => {
+      try {
+        const response = await getFundraiser(id);
+        setFundraiser(response);
+      } catch (error) {
+        console.error("Error fetching fundraiser:", error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
     getFundraiserDetail();
-  }, []);
+  }, [id]);
 
   const donate = async () => {
     setIsProcessing(true);

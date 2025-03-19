@@ -1,4 +1,5 @@
-import React from 'react';
+
+import PropTypes from 'prop-types';
 
 const ProgressBar = ({ currentAmount, targetAmount }) => {
   const percentage = Math.min((currentAmount / targetAmount) * 100, 100); // Cap at 100%
@@ -13,6 +14,11 @@ const ProgressBar = ({ currentAmount, targetAmount }) => {
       </div>
     </div>
   );
+};
+
+ProgressBar.propTypes = {
+  currentAmount: PropTypes.number.isRequired,
+  targetAmount: PropTypes.number.isRequired,
 };
 
 export default ProgressBar;

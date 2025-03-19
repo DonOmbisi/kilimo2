@@ -29,7 +29,7 @@ connectDB();
 app.use(express.json());
 
 app.get('/', (_req, res) => {
-  res.send('Welcome to KrishiCoin 🪙🧑‍🌾🌱');
+  res.send('Welcome to Kilimo connect 🪙🧑‍🌾🌱');
 });
 
 app.use('/api/users', userRoutes);

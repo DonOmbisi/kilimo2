@@ -1,8 +1,7 @@
-import React from "react";
 import { Link } from "react-router-dom";
+import PropTypes from 'prop-types';
 
-function P2PCard({ id, title, image, price, user, quantityLeft, quantity }) {
-  const percentageLeft = (quantityLeft / quantity) * 100;
+function P2PCard({ id, title, image, price, user, quantityLeft }) {
 
   return (
     <div className="card h-[350px] bg-[#283e2f] text-[#e0fce7] w-96 shadow-xl rounded-lg overflow-hidden">
@@ -58,41 +57,13 @@ function P2PCard({ id, title, image, price, user, quantityLeft, quantity }) {
   );
 }
 
-function QuantityCircle({ quantity, quantityLeft }) {
-  const radius = 24;
-  const circumference = 2 * Math.PI * radius;
-  const percentageLeft = (quantityLeft / quantity) * 100;
-  const offset = circumference - (percentageLeft / 100) * circumference;
-
-  return (
-    <div className="relative  w-16 h-16">
-      <svg className="w-full h-full  transform -rotate-90" viewBox="0 0 64 64">
-        <circle
-          cx="35"
-          cy="30"
-          r={radius}
-          fill="transparent"
-          stroke="#ffffff"
-          strokeWidth="6"
-        />
-        <circle
-          cx="35"
-          cy="30"
-          r={radius}
-          fill="transparent"
-          stroke="#00eb52"
-          strokeWidth="6"
-          strokeDasharray={circumference}
-          strokeDashoffset={offset}
-          strokeLinecap="round"
-        />
-      </svg>
-
-      <div className="absolute inset-0 flex items-center justify-center text-sm font-semibold">
-      {quantityLeft.toFixed(0) } %
-      </div>
-    </div>
-  );
-}
+P2PCard.propTypes = {
+  id: PropTypes.string.isRequired,
+  title: PropTypes.string.isRequired,
+  image: PropTypes.string.isRequired,
+  price: PropTypes.number.isRequired,
+  user: PropTypes.string.isRequired,
+  quantityLeft: PropTypes.number.isRequired,
+};
 
 export default P2PCard;

@@ -1,5 +1,5 @@
-import React from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
+import PropTypes from 'prop-types';
 
 // Import Swiper styles
 import "swiper/css";
@@ -9,8 +9,7 @@ import "swiper/css/navigation";
 
 // Import Swiper modules
 import { Autoplay, EffectCards, Pagination } from "swiper/modules";
-
-export default function Carousel({ images }) {
+function Carousel({ images }) {
   return (
     <div>
       <Swiper
@@ -47,3 +46,9 @@ export default function Carousel({ images }) {
     </div>
   );
 }
+
+Carousel.propTypes = {
+  images: PropTypes.arrayOf(PropTypes.string).isRequired,
+};
+
+export default Carousel;

@@ -29,8 +29,8 @@ const BaseName = () => {
 	return (
 		<div>
 			<div className='flex items-center space-x-2 p-2'>
-				<img src='/krishi-coin-logo.png' alt='Logo' width={50} />
-				<span className='text-green-800 text-3xl font-bold'>KrishiCoin</span>
+				<img src='/kilimo1.jpg' alt='Logo' width={50} />
+				<span className='text-green-800 text-3xl font-bold'>KILIMO CONNECT</span>
 				<span className='text-2xl flex gap-2'>
 					{' '}
 					|{' '}

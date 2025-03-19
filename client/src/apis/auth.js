@@ -32,7 +32,7 @@ export const checkUser = async (wallet_address) => {
   }
 };
 
-export const getUser = async (token) => {
+export const getUser = async () => {
   try {
     const response = await axios.get(baseUrl + "/api/users/profile", {
       headers: {

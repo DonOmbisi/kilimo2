@@ -7,19 +7,18 @@ const CurrencyConvertor = ({ from, to, value }) => {
 	const [fetching, setFetching] = useState(false);
 	const [exchangeRate, setExchangeRate] = useState(0);
 
-	const fetchExRate = async () => {
-		try {
-			setFetching(true);
-			const res = await getCurrencyExchangeRate(from);
-			setExchangeRate(parseFloat(res.data.rates[to]));
-		} catch (error) {
-			console.error('Error fetching exchange rate:', error);
-		} finally {
-			setFetching(false);
-		}
-	};
-
 	useEffect(() => {
+		const fetchExRate = async () => {
+			try {
+				setFetching(true);
+				const res = await getCurrencyExchangeRate(from);
+				setExchangeRate(parseFloat(res.data.rates[to]));
+			} catch (error) {
+				console.error('Error fetching exchange rate:', error);
+			} finally {
+				setFetching(false);
+			}
+		};
 		fetchExRate();
 	}, [from, to, value]);
 	return (

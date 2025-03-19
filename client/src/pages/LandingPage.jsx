@@ -1,48 +1,17 @@
-import { motion, useInView } from "framer-motion";
-import { useEffect, useRef } from "react";
+import { motion } from "framer-motion";
+import { useEffect } from "react";
 import ConnectWalletBtn from "../components/ConnectWalletBtn";
-import PropTypes from "prop-types";
 import { useNavigate } from "react-router-dom";
 import { useWalletStore } from "../store/WalletStore";
 import { useAccount } from "wagmi";
 import toast from "react-hot-toast";
 
-const LadderFeature = ({ title, description, index }) => {
-  const ref = useRef(null);
-  const isInView = useInView(ref, { once: true });
-
-  return (
-    <motion.div
-      ref={ref}
-      className="mb-16 flex items-center"
-      initial={{ opacity: 0, x: index % 2 === 0 ? -100 : 100 }}
-      animate={isInView ? { opacity: 1, x: index % 2 === 0 ? 0 : 0 } : {}}
-      transition={{ duration: 1, delay: index * 0.2 }}
-    >
-      <div className="w-10 h-full bg-blue-00 rounded-l-full relative">
-        <motion.div
-          className="w-10 h-10 bg-white rounded-full border-2 border-green-500 absolute top-1/2 left-0 transform -translate-y-1/2"
-          initial={{ rotate: index % 2 === 0 ? 45 : -45 }}
-          whileInView={{ rotate: 0 }}
-          transition={{ type: "spring", stiffness: 100 }}
-        />
-      </div>
-
-      <div className="ml-11 bg-cyan-00 text-left">
-        <h3 className="text-2xl font-bold text-gray-800">{title}</h3>
-        <p className="text-gray-600 w-[46vw]  bg-slate-100 p-3 rounded-e-2xl rounded-b-2xl border-gray-100 border-[10px] mt-2">
-          {description}
-        </p>
-      </div>
-    </motion.div>
-  );
-};
 
 const LandingPage = () => {
   const navigate = useNavigate();
   const setAddress = useWalletStore((state) => state.setAddress);
   const walletSuccessHandler = (address) => {
-    console.log(`Wallet connected: ${address}`);
+    console.log(`Wallet connected: ${account.address}`);
     setAddress(address);
     localStorage.setItem("base-wallet-address", address);
     navigate("/get-basename");
@@ -56,9 +25,9 @@ const LandingPage = () => {
   useEffect(() => {
     if (account.isConnected) {
         navigate("/home");
-      console.log(`Wallet connected: ${address}`);
+      console.log(`Wallet connected: ${account.address}`);
     }
-  }, []);
+  }, [account.address, account.isConnected, navigate]);
 
   return (
     <div className="min-h-screen bg-gradient-to-t from-[#3da898] to-[#000000] text-gray-900">
@@ -71,9 +40,9 @@ const LandingPage = () => {
       <div className=" z-20 absolute top-0 bg-gradient-to-r from-[#3b622c] to-[#101264] opacity-[0.6] h-screen w-screen flex items-center justify-center"></div>
       <div className="absolute top-0 h-[80px] z-50 w-full  flex items-center p-4 justify-between ">
         <div className="flex p-4 items-center space-x-2 ">
-          <img src="/krishi-coin-logo.png" alt="Logo" className="h-12" />
+          <img src="/kilimo1.jpg" alt="Logo" className="h-12" />
           <span className="text-[#3ed83e] text-[32px] font-bold max-md:hidden">
-            KrishiCoin
+            KILIMO CONNECT
           </span>
         </div>
         <motion.button
@@ -100,7 +69,7 @@ const LandingPage = () => {
               <span>Welcome to </span>
               <span className=" font-extrabold pl-3 text-[#3ef657] ">
                 {" "}
-                KrishiCoin
+                KILIMO CONNECT
               </span>
             </div>
             <img
@@ -114,7 +83,7 @@ const LandingPage = () => {
             animate={{ x: 0 }}
             transition={{ type: "spring", delay: 0.5 }}
           >
-            <span>" Empowering Farmers, Connecting Communities: Shop Fresh, Support Local! "</span>
+            <span>&quot; Empowering Farmers, Connecting Communities: Shop Fresh, Support Local! &quot;</span>
           </motion.p>
         </div>
       </section>
@@ -174,7 +143,7 @@ const LandingPage = () => {
       <section className="py-20 bg-gradient-to-r from-green-300 via-emerald-400 to-lime-500">
         <div className="max-w-7xl mx-auto px-4 py-12 text-center">
           <h2 className="text-4xl text-white font-semibold mb-12">
-            Why KrishiCoin? 🌾
+            Why KILIMO CONNECT? 🌾
           </h2>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -193,7 +162,7 @@ const LandingPage = () => {
               <ul className="list-disc list-inside text-left mt-4">
                 <li>🔄 Transparent blockchain-based transactions</li>
                 <li>🛍️ Buy directly from farmers</li>
-                <li>📈 Increase farmers' profits with fair trade</li>
+                <li>📈 Increase farmers&apos; profits with fair trade</li>
               </ul>
             </motion.div>
 

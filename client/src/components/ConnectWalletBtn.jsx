@@ -23,8 +23,8 @@ const buttonStyles = {
 };
 
 const sdk = new CoinbaseWalletSDK({
-	appName: 'KrishiCoin',
-	appLogoUrl: '/krishi-coin-logo.png',
+	appName: 'KILIMO CONNECT',
+	appLogoUrl: '/kilimo1.jpg',
 	appChainIds: [84532],
 });
 

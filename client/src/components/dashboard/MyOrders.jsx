@@ -1,6 +1,7 @@
 import { GoDotFill } from 'react-icons/go';
 import { p2pContract } from '../../utils/contract';
 import toast from 'react-hot-toast';
+import PropTypes from 'prop-types';
 
 function Orders({ src, title, status, price, seller, desc, orderId }) {
   const handleConfirmDelivery = async () => {
@@ -56,5 +57,14 @@ function Orders({ src, title, status, price, seller, desc, orderId }) {
 		</div>
 	);
 }
+Orders.propTypes = {
+  src: PropTypes.string.isRequired,
+  title: PropTypes.string.isRequired,
+  status: PropTypes.string.isRequired,
+  price: PropTypes.number.isRequired,
+  seller: PropTypes.string.isRequired,
+  desc: PropTypes.string.isRequired,
+  orderId: PropTypes.string.isRequired,
+};
 
 export default Orders;

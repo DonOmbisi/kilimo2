@@ -1,8 +1,9 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { FaRegThumbsUp, FaRegThumbsDown } from "react-icons/fa";
 import { downvoteBlog, upvoteBlog } from "../apis/blog";
 import toast from "react-hot-toast";
+import PropTypes from "prop-types";
 
 function BlogCard({ id, title, image, user, upvotes_arr, downvotes_arr }) {
   const [isUpvoted, setIsUpvoted] = useState(false);
@@ -107,5 +108,13 @@ function BlogCard({ id, title, image, user, upvotes_arr, downvotes_arr }) {
     </div>
   );
 }
+BlogCard.propTypes = {
+  id: PropTypes.string.isRequired,
+  title: PropTypes.string.isRequired,
+  image: PropTypes.string.isRequired,
+  user: PropTypes.string.isRequired,
+  upvotes_arr: PropTypes.array.isRequired,
+  downvotes_arr: PropTypes.array.isRequired,
+};
 
 export default BlogCard;

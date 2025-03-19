@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import parse from "html-react-parser";
 import CustomLoader from "../components/CustomLoader";
 import { useParams } from "react-router-dom";

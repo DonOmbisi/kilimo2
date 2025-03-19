@@ -1,6 +1,5 @@
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import toast from 'react-hot-toast';
 import { getUser } from '../apis/auth';
 import CustomLoader from '../components/CustomLoader';
 import Listings from '../components/dashboard/MyListings';
@@ -13,7 +12,6 @@ function DashBoard() {
 	const [activeTab, setActiveTab] = useState('My Donations');
 	const [user, setUser] = useState([]);
 	const [loading, setLoading] = useState(true);
-	const [error, setError] = useState(null);
 	const [myDonations, setMyDonations] = useState([]);
 	const [myListings, setMyListings] = useState([]);
 	const [myOrders, setMyOrders] = useState([]);

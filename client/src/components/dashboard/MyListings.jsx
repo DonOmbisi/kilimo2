@@ -1,4 +1,5 @@
-import React from "react";
+
+import PropTypes from 'prop-types';
 
 function Listings({ src, title, total_stock, price, quantity_left, desc }) {
   const displayValue = Math.min(quantity_left, 100);
@@ -44,5 +45,14 @@ function Listings({ src, title, total_stock, price, quantity_left, desc }) {
     </div>
   );
 }
+
+Listings.propTypes = {
+  src: PropTypes.string.isRequired,
+  title: PropTypes.string.isRequired,
+  total_stock: PropTypes.number.isRequired,
+  price: PropTypes.number.isRequired,
+  quantity_left: PropTypes.number.isRequired,
+  desc: PropTypes.string.isRequired,
+};
 
 export default Listings;
