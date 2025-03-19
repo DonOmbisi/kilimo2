@@ -1,8 +1,6 @@
 <div align="left">
     
-![KrishiCoin](https://github.com/user-attachments/assets/c1de3085-9dc1-4179-86c1-de116c41fe44)
-    
-### **📍Built At Based India**
+
 </div>
 
 <hr />
